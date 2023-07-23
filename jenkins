@@ -1,8 +1,5 @@
  pipeline {
     agent any
-    environment {
-        // Define environment variables if required
-    }
     stages {
         stage('Cleanup') {
             steps {
@@ -52,3 +49,4 @@
         }
     }
 }
+
