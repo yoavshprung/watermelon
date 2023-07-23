@@ -1,6 +1,13 @@
- pipeline {
+pipeline {
     agent any
     stages {
+        stage('Git Clone') {
+            steps {
+                // Clone the repository
+                git branch: 'master', url: 'https://github.com/yoavshprung/watermelon.git'
+            }
+        }
+        
         stage('Cleanup') {
             steps {
                 // Clean up any previous build artifacts if necessary
