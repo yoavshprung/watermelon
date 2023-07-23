@@ -3,8 +3,8 @@ pipeline {
     stages {
         stage('Git Clone') {
             steps {
-                // Clone the repository
-                git branch: 'master', url: 'https://github.com/yoavshprung/watermelon.git'
+                // Clone the repository with Git tool and credentials
+                git branch: 'master', credentialsId: 'YOUR_CREDENTIALS_ID', url: 'https://github.com/yoavshprung/watermelon.git'
             }
         }
         
@@ -56,4 +56,5 @@ pipeline {
         }
     }
 }
+
 
