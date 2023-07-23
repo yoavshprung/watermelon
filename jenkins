@@ -21,7 +21,6 @@ pipeline {
                 // Build your Flask app here
                 // For example, installing dependencies and building the app
                 sh 'pip install -r requirements.txt'
-                sh 'pip install --upgrade numpy'
             }
         }
 
