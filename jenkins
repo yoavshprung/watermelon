@@ -16,14 +16,12 @@ pipeline {
             }
         }
         
-        stage('Build') {
-            steps {
-                // Build your Flask app here
-                // For example, installing dependencies and building the app
-                sh 'pip install -r requirements.txt'
-            }
-        }
-
+       stage('Test') {
+    steps {
+        // Run your Flask app here
+        sh 'flask run'
+    }
+}
     stage('Test') {
     steps {
         // Set up the virtual environment (if necessary)
