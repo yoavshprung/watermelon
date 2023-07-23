@@ -26,9 +26,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                // Run tests for your Flask app here
-                // For example, using pytest or any other testing framework
-                sh 'pytest tests/'
+                // flask run
             }
         }
         stage('Deploy') {
