@@ -26,7 +26,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                // flask run
+                // running flask app
             }
         }
         stage('Deploy') {
