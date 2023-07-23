@@ -24,11 +24,19 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                // running flask app
-            }
-        }
+    stage('Test') {
+    steps {
+        // Set up the virtual environment (if necessary)
+        sh 'python3 -m venv venv'
+        sh 'source venv/bin/activate'  // Activate the virtual environment
+
+        // Install project dependencies
+        sh 'pip install -r requirements.txt'
+
+        // Run Flask app
+        sh 'flask run'
+    }
+}
         stage('Deploy') {
             steps {
                 // Deploy your Flask app here
