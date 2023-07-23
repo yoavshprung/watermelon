@@ -1,1 +1,54 @@
-sss
+pipeline {
+    agent any
+    environment {
+        // Define environment variables if required
+    }
+    stages {
+        stage('Cleanup') {
+            steps {
+                // Clean up any previous build artifacts if necessary
+                // For example, removing old build directories or files
+                sh 'rm -rf build'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Build your Flask app here
+                // For example, installing dependencies and building the app
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Run tests for your Flask app here
+                // For example, using pytest or any other testing framework
+                sh 'pytest tests/'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Deploy your Flask app here
+                // For example, copying the built files to the deployment server
+                // and restarting the application server
+                sh 'cp -r build /var/www/flask_app'
+                sh 'sudo service flask_app restart'
+            }
+        }
+    }
+    post {
+        always {
+            // Clean up any temporary files or artifacts after the pipeline finishes
+            // For example, removing build directories
+            sh 'rm -rf build'
+        }
+        success {
+            echo 'Pipeline successful! Your Flask app is deployed.'
+        }
+        failure {
+            echo 'Pipeline failed! Check the logs for more information.'
+        }
+    }
+}
